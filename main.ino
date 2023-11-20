@@ -8,6 +8,7 @@ Servo servoOne;
 
 int potPin = 0;
 int value;   
+int angle;
 
 void setup() {
     servoOne.attach(9);
@@ -15,7 +16,9 @@ void setup() {
 
 void loop() {
     value = analogRead(potPin); 
-    value = map(value, 0, 1023, 0, 180);     
-    servoOne.write(value);                  
+
+    angle = value / 5.68; // 1023 (max pot value) / 180 (max servo angle)
+
+    servoOne.write(angle);                  
     delay(15);                           
 }
